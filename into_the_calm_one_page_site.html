@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Into The Calm — DJ Travel</title>
+  <meta name="description" content="End to end travel for DJs and crews. Fast quotes, smart routes, no drama on travel days." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b1320;
+      --card: #111a2b;
+      --text: #f5f7fb;
+      --muted: #a7b0c0;
+      --accent: #37c6d0;
+      --accent-2: #61d49f;
+      --ring: rgba(55, 198, 208, 0.35);
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background: radial-gradient(1200px 600px at 80% -10%, rgba(97,212,159,.08), transparent 60%),
+                  radial-gradient(900px 500px at 10% 10%, rgba(55,198,208,.10), transparent 60%),
+                  var(--bg);
+      line-height: 1.6;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Layout */
+    .container { max-width: 1100px; margin: 0 auto; padding: 24px; }
+    header { position: sticky; top: 0; backdrop-filter: saturate(1.2) blur(8px); background: rgba(11,19,32,.55); border-bottom: 1px solid rgba(255,255,255,.06); z-index: 20; }
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 24px; }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; letter-spacing: .5px; }
+    .logo { width: 34px; height: 34px; border-radius: 10px; background: linear-gradient(180deg, var(--accent), var(--accent-2)); display: grid; place-items: center; color: #06222a; font-weight: 800; }
+    .nav a { margin-left: 16px; font-weight: 600; color: var(--text); opacity: .9; }
+    .nav a.btn { opacity: 1; }
+
+    /* Buttons */
+    .btn { display: inline-flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 12px; border: 1px solid rgba(255,255,255,.10); background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); color: var(--text); font-weight: 700; text-decoration: none; box-shadow: 0 0 0 0 var(--ring); transition: box-shadow .2s ease, transform .06s ease, border-color .2s ease; }
+    .btn:hover { border-color: rgba(255,255,255,.20); }
+    .btn:active { transform: translateY(1px); }
+    .btn.primary { background: linear-gradient(180deg, var(--accent), #22a7b3); color: #072228; border: none; }
+
+    /* Hero */
+    .hero { padding: 80px 24px 40px; text-align: center; }
+    .hero h1 { font-size: clamp(32px, 5vw, 56px); line-height: 1.1; margin: 0 0 12px; letter-spacing: .2px; }
+    .hero p { font-size: clamp(16px, 2.4vw, 20px); color: var(--muted); margin: 0 auto 24px; max-width: 720px; }
+    .cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .trust { margin-top: 18px; font-size: 14px; color: var(--muted); }
+
+    /* Sections */
+    section { padding: 56px 0; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .card { background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01)); border: 1px solid rgba(255,255,255,.08); border-radius: 16px; padding: 18px; }
+    .card h3 { margin: 0 0 6px; font-size: 18px; }
+    .card p { margin: 0; color: var(--muted); }
+
+    .two { display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px; align-items: center; }
+    .imgwrap { border-radius: 16px; overflow: hidden; border: 1px solid rgba(255,255,255,.08); }
+    .imgwrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    /* List */
+    .steps { counter-reset: step; display: grid; gap: 12px; }
+    .step { display: flex; gap: 12px; align-items: start; background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01)); border: 1px solid rgba(255,255,255,.08); border-radius: 14px; padding: 14px; }
+    .badge { width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(180deg, var(--accent-2), var(--accent)); color: #06222a; font-weight: 800; display: grid; place-items: center; flex: 0 0 auto; }
+    .step h4 { margin: 2px 0 2px; }
+    .step p { margin: 0; color: var(--muted); }
+
+    /* Contact */
+    .contact { background: linear-gradient(0deg, rgba(255,255,255,.02), rgba(255,255,255,0)); border-top: 1px solid rgba(255,255,255,.06); }
+    form { display: grid; gap: 12px; }
+    input, textarea { width: 100%; padding: 12px 14px; border-radius: 12px; border: 1px solid rgba(255,255,255,.12); background: #0d1728; color: var(--text); font: inherit; }
+    input::placeholder, textarea::placeholder { color: #7d8796; }
+    textarea { min-height: 120px; resize: vertical; }
+    .note { font-size: 12px; color: var(--muted); }
+
+    /* Footer */
+    footer { padding: 36px 24px 60px; color: var(--muted); text-align: center; }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .grid { grid-template-columns: 1fr; }
+      .two { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav container">
+      <div class="brand">
+        <div class="logo">IC</div>
+        <div>Into The Calm</div>
+      </div>
+      <nav>
+        <a href="#what">What we do</a>
+        <a href="#how">How it works</a>
+        <a href="#contact" class="btn">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>DJ travel without stress</h1>
+        <p>We plan and run travel for artists and crews. Fast quotes. Smart routes. Real support before and during the trip.</p>
+        <div class="cta-row">
+          <a class="btn primary" href="#contact">Start a request</a>
+          <a class="btn" href="mailto:hello@intothecalm.com">Email us</a>
+        </div>
+        <div class="trust">Trusted by touring artists and their teams</div>
+      </div>
+    </section>
+
+    <section id="what">
+      <div class="container">
+        <div class="grid">
+          <div class="card">
+            <h3>Flights and holds</h3>
+            <p>Pro routing and elite fares. We hold options while you confirm.</p>
+          </div>
+          <div class="card">
+            <h3>Hotels and transfers</h3>
+            <p>Late check in, early check out, ground moves and meet and greet.</p>
+          </div>
+          <div class="card">
+            <h3>Visas and insurance</h3>
+            <p>Paperwork sorted. Simple cover that fits touring risk.</p>
+          </div>
+          <div class="card">
+            <h3>Itineraries</h3>
+            <p>Clear day by day plans in your inbox and on your phone.</p>
+          </div>
+          <div class="card">
+            <h3>Last minute fixes</h3>
+            <p>Delays, cancellations, venue changes. We keep the show on track.</p>
+          </div>
+          <div class="card">
+            <h3>On trip support</h3>
+            <p>Fast replies from humans who know your route.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="how">
+      <div class="container two">
+        <div>
+          <h2>How it works</h2>
+          <div class="steps">
+            <div class="step">
+              <div class="badge">1</div>
+              <div>
+                <h4>Share dates and cities</h4>
+                <p>Send us a list of shows and timing rules. We take it from there.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="badge">2</div>
+              <div>
+                <h4>We plan and hold</h4>
+                <p>Routes that balance cost, rest and risk. We hold seats while you decide.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="badge">3</div>
+              <div>
+                <h4>You approve and pay</h4>
+                <p>Simple quotes. Clear terms. Card or bank.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="badge">4</div>
+              <div>
+                <h4>We deliver and support</h4>
+                <p>Tickets, hotel details and a live plan. Help on travel days.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="imgwrap">
+          <img alt="DJ travel montage" src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=1600&auto=format&fit=crop" />
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2>Who we serve</h2>
+        <div class="grid">
+          <div class="card"><h3>Artists</h3><p>Solo acts and duos. Calm travel on show days.</p></div>
+          <div class="card"><h3>Tour managers</h3><p>Routes that respect call times and load in.</p></div>
+          <div class="card"><h3>Labels and promoters</h3><p>Reliable travel that protects the show.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="container two">
+        <div>
+          <h2>Start a request</h2>
+          <p class="note">Send the form or email <a href="mailto:hello@intothecalm.com">hello@intothecalm.com</a>. We reply fast.</p>
+          <form action="https://formspree.io/f/your-id" method="POST">
+            <input type="text" name="name" placeholder="Your name" required>
+            <input type="text" name="company" placeholder="Artist or company">
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="tel" name="phone" placeholder="Phone">
+            <textarea name="dates" placeholder="Tour dates and cities"></textarea>
+            <textarea name="notes" placeholder="Notes or rules"></textarea>
+            <button class="btn primary" type="submit">Send</button>
+          </form>
+          <p class="note">Privacy: we use your details to reply and book travel. Ask us to delete at any time.</p>
+        </div>
+        <div class="imgwrap">
+          <img alt="Airport scene" src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?q=80&w=1600&auto=format&fit=crop" />
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div>Into The Calm Ltd</div>
+      <div>All rights reserved</div>
+    </div>
+  </footer>
+</body>
+</html>
