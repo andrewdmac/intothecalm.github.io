@@ -88,6 +88,27 @@
       .grid { grid-template-columns: 1fr; }
       .two { grid-template-columns: 1fr; }
     }
+  
+    /* Mobile quality of life */
+    section { scroll-margin-top: 84px; }
+    .nav { flex-wrap: wrap; gap: 8px 16px; }
+    .nav a { padding: 10px 12px; border-radius: 10px; }
+    .hero { padding: 56px 16px 28px; }
+    input, textarea { font-size: 16px; } /* prevent iOS zoom */
+
+    @media (max-width: 760px) {
+      .cta-row { flex-direction: column; align-items: stretch; }
+      .cta-row .btn { justify-content: center; width: 100%; }
+      .nav { justify-content: center; }
+      .nav a { margin-left: 0; }
+      .container { padding: 18px; }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 28px; }
+      .hero p { font-size: 16px; }
+      .btn { padding: 12px 14px; }
+    }
   </style>
 </head>
 <body>
@@ -108,11 +129,11 @@
   <main>
     <section class="hero">
       <div class="container">
-        <h1>DJ Travel</h1>
-        <p>We plan and book travel for artists and crews. Fast quotes. Smart routes. Real person support before and during the trip.</p>
+        <h1>DJ travel without stress</h1>
+        <p>We plan and run travel for artists and crews. Fast quotes. Smart routes. Real support before and during the trip.</p>
         <div class="cta-row">
           <a class="btn primary" href="#contact">Start a request</a>
-          <a class="btn" href="mailto:info@calm.travel">Email us</a>
+          <a class="btn" href="mailto:hello@intothecalm.com">Email us</a>
         </div>
         <div class="trust">Trusted by touring artists and their teams</div>
       </div>
@@ -123,7 +144,7 @@
         <div class="grid">
           <div class="card">
             <h3>Flights and holds</h3>
-            <p>Pro routing and the best fares. We hold options while you confirm.</p>
+            <p>Pro routing and elite fares. We hold options while you confirm.</p>
           </div>
           <div class="card">
             <h3>Hotels and transfers</h3>
@@ -185,7 +206,7 @@
           </div>
         </div>
         <div class="imgwrap">
-          <img alt="DJ travel montage" src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=1600&auto=format&fit=crop" />
+          <img loading="lazy" alt="DJ travel montage" src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=1600&auto=format&fit=crop" />
         </div>
       </div>
     </section>
@@ -194,7 +215,7 @@
       <div class="container">
         <h2>Who we serve</h2>
         <div class="grid">
-          <div class="card"><h3>Artists</h3><p>From solo acts to the full band — organised, stress-free travel.</p></div>
+          <div class="card"><h3>Artists</h3><p>Solo acts and duos. Calm travel on show days.</p></div>
           <div class="card"><h3>Tour managers</h3><p>Routes that respect call times and load in.</p></div>
           <div class="card"><h3>Labels and promoters</h3><p>Reliable travel that protects the show.</p></div>
         </div>
@@ -205,7 +226,7 @@
       <div class="container two">
         <div>
           <h2>Start a request</h2>
-          <p class="note">Send the form or email <a href="mailto:hello@intothecalm.com">info@calm.travel</a>. We reply fast.</p>
+          <p class="note">Send the form or email <a href="mailto:hello@intothecalm.com">hello@intothecalm.com</a>. We reply fast.</p>
           <form action="https://formspree.io/f/your-id" method="POST">
             <input type="text" name="name" placeholder="Your name" required>
             <input type="text" name="company" placeholder="Artist or company">
@@ -218,7 +239,7 @@
           <p class="note">Privacy: we use your details to reply and book travel. Ask us to delete at any time.</p>
         </div>
         <div class="imgwrap">
-          <img alt="Airport scene" src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?q=80&w=1600&auto=format&fit=crop" />
+          <img loading="lazy" alt="Airport scene" src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?q=80&w=1600&auto=format&fit=crop" />
         </div>
       </div>
     </section>
